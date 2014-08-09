@@ -43,6 +43,8 @@ func main() {
 		AllowCredentials: true,
 	}))
 
+	m.Use(martini.Static("client/dist"))
+
 	m.Get("/api/v1/conversions", func(res http.ResponseWriter, req *http.Request) string {
 		return "Hello world"
 	})
