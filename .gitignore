@@ -11,6 +11,11 @@
 /dist
 /tmp
 /node_modules
+/client/node_modules
+/client/tmp
+/server/tmp
+/server/log/
+/server/db/development.sqlite3
 
 # Miscellaneous
 /.sass-cache
