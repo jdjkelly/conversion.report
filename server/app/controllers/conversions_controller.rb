@@ -1,5 +1,6 @@
 class ConversionsController < ApplicationController
   before_action :set_conversion, only: [:show, :edit, :update, :destroy]
+  before_action :require_login, except: [:create]
 
   # We deliberately want to allow any client to submit conversions. This is
   # not a security concern because authenticity_tokens are relavent for
@@ -45,30 +46,6 @@ class ConversionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /conversions/1
-  # PATCH/PUT /conversions/1.json
-  def update
-    respond_to do |format|
-      if @conversion.update(conversion_params)
-        format.html { redirect_to @conversion, notice: 'Conversion was successfully updated.' }
-        format.json { render :show, status: :ok, location: @conversion }
-      else
-        format.html { render :edit }
-        format.json { render json: @conversion.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /conversions/1
-  # DELETE /conversions/1.json
-  def destroy
-    @conversion.destroy
-    respond_to do |format|
-      format.html { redirect_to conversions_url, notice: 'Conversion was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_conversion
@@ -77,7 +54,6 @@ class ConversionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def conversion_params
-      binding.pry
       params.require(:conversion).permit(:tracker_id)
     end
 end

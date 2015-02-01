@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
- constraints Clearance::Constraints::SignedIn.new do
-   resources :conversions
 
-   resources :trackers
-  end
+  resources :conversions, except: [:update, :destroy]
+  resources :trackers
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

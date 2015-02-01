@@ -6,12 +6,21 @@
 #  name       :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  user_id    :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
   name: MyString
+  user: bob
 
 two:
   name: MyString
+  user: bob
+
+coolsite:
+  user: billy
+
+lamesite:
+  user: bob
