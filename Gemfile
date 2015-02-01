@@ -30,7 +30,7 @@ gem 'clearance', '~> 1.8.0'
 gem 'annotate'
 gem 'rails_12factor', group: :production
 gem 'pg'
-
+gem 'rack-cors', :require => 'rack/cors'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

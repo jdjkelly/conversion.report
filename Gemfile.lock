@@ -70,6 +70,8 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     rack (1.5.2)
+    rack-cors (0.2.8)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.1.7)
@@ -137,6 +139,7 @@ DEPENDENCIES
   jquery-rails
   pg
   pry
+  rack-cors
   rails (= 4.1.7)
   rails_12factor
   sass-rails (~> 4.0.3)
