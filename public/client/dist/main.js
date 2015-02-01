@@ -36,10 +36,12 @@
         return;
       }
       request = new XMLHttpRequest;
-      request.open("post", "http://localhost:3000/api/v1/conversions", false);
+      request.open("post", "http://conversion-report.herokuapp.com/conversions", false);
       request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
       return request.send(JSON.stringify({
-        trackerId: id
+        conversion: {
+          tracker_id: id
+        }
       }));
     };
 

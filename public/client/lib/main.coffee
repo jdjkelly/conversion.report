@@ -1,14 +1,14 @@
 class ConvertReportTracker
   constructor: ->
     @bindClickEvents()
-    
+
   bindClickEvents: ->
     links = @findLinks()
 
-    for link in links 
+    for link in links
       do (link) =>
         if link.addEventListener
-          link.addEventListener 'click', @trackClick, true 
+          link.addEventListener 'click', @trackClick, true
         else if link.attachEvent
           link.attachEvent 'onclick', @trackClick
 
@@ -20,9 +20,9 @@ class ConvertReportTracker
     return unless id?
 
     request = new XMLHttpRequest
-    request.open "post", "@@PROTOCOL://@@HOST/api/v1/conversions", false
+    request.open "post", "@@PROTOCOL://@@HOST/conversions", false
     request.setRequestHeader "Content-Type", "application/json;charset=UTF-8"
-    request.send JSON.stringify { trackerId: id} 
-  
+    request.send JSON.stringify { conversion: { tracker_id: id} }
+
 window.onload = (e)->
   new ConvertReportTracker

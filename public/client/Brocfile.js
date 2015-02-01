@@ -12,7 +12,7 @@ var tree = replace('lib', {
     },
     {
       match: 'HOST',
-      replacement: 'localhost:3000'
+      replacement: 'conversion-report.herokuapp.com'
     }
   ]
 })

@@ -16,6 +16,8 @@
 /server/tmp
 /server/log/
 /server/db/development.sqlite3
+/public/client/node_modules
+/public/client/tmp
 
 # Miscellaneous
 /.sass-cache
