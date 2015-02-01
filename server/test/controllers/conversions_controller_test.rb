@@ -3,6 +3,7 @@ require 'test_helper'
 class ConversionsControllerTest < ActionController::TestCase
   setup do
     @conversion = conversions(:one)
+    sign_in_as(users(:billy))
   end
 
   test "should get index" do
@@ -34,16 +35,15 @@ class ConversionsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should update conversion" do
-    patch :update, id: @conversion, conversion: { browser: @conversion.browser, host: @conversion.host, ip_address: @conversion.ip_address, os: @conversion.os, user_agent: @conversion.user_agent }
-    assert_redirected_to conversion_path(assigns(:conversion))
+  test "should not be able to update a conversion" do
+    assert_raise(ActionController::UrlGenerationError) do
+      patch :update, id: @conversion, conversion: { browser: @conversion.browser, host: @conversion.host, ip_address: @conversion.ip_address, os: @conversion.os, user_agent: @conversion.user_agent }
+    end
   end
 
-  test "should destroy conversion" do
-    assert_difference('Conversion.count', -1) do
+  test "should not be able to destroy a conversion" do
+    assert_raise(ActionController::UrlGenerationError) do
       delete :destroy, id: @conversion
     end
-
-    assert_redirected_to conversions_path
   end
 end

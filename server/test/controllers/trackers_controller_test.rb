@@ -3,6 +3,7 @@ require 'test_helper'
 class TrackersControllerTest < ActionController::TestCase
   setup do
     @tracker = trackers(:one)
+    sign_in_as(users(:bob))
   end
 
   test "should get index" do
@@ -45,5 +46,18 @@ class TrackersControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to trackers_path
+  end
+
+  test "should only get trackers belonging to user" do
+    get :index
+    assert_equal(4,Tracker.all.count)
+    assert_equal(3,assigns(:trackers).count)
+    assert_equal("bob@example.com",assigns(:trackers).first.user.email)
+  end
+
+  test "should only work if you're signed in" do
+    sign_out
+    get :index
+    assert_redirected_to sign_in_path
   end
 end

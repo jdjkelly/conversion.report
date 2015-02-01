@@ -1,10 +1,11 @@
 class TrackersController < ApplicationController
   before_action :set_tracker, only: [:show, :edit, :update, :destroy]
+  before_action :require_login
 
   # GET /trackers
   # GET /trackers.json
   def index
-    @trackers = Tracker.all
+    @trackers = Tracker.where(user:current_user)
   end
 
   # GET /trackers/1
@@ -24,7 +25,7 @@ class TrackersController < ApplicationController
   # POST /trackers
   # POST /trackers.json
   def create
-    @tracker = Tracker.new(tracker_params)
+    @tracker = current_user.trackers.new(tracker_params)
 
     respond_to do |format|
       if @tracker.save
@@ -64,7 +65,7 @@ class TrackersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tracker
-      @tracker = Tracker.find(params[:id])
+      @tracker = Tracker.find_by id: params[:id], user: current_user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
