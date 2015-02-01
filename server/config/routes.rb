@@ -8,9 +8,13 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  constraints Clearance::Constraints::SignedIn.new do
+    root to: 'trackers#index', as: :signed_in_root
+  end
 
+  constraints Clearance::Constraints::SignedOut.new do
+    root to: 'welcome#index'
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
