@@ -1,28 +1,25 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
 * Ruby version
 
-* System dependencies
+We assume Ruby 2.1.2 is running - this is defined in `.ruby-version`, which rbenv will pick up.
+Assuming you have rbenv installed, you can install the local Ruby with `rbenv install`.
 
-* Configuration
+* Dependencies
+`brew install postgres`
+`bundle exec gem install bundler`
+`bundle install`
 
 * Database creation
+Make sure postgres is running. Then create a role called `conversionreport`:
 
-* Database initialization
+`createuser conversionreport -s`
+`bundle exec rake db:create`
 
 * How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+`bundle exec rake test`
 
 * Deployment instructions
 
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Merge commits into master, they will test here: https://circleci.com/gh/jdjkelly/conversion.report/
