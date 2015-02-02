@@ -10,16 +10,10 @@
 # Compiled output
 /dist
 /tmp
-/node_modules
-/client/node_modules
-/client/tmp
-/server/tmp
-/server/log/
-/server/db/development.sqlite3
 /public/client/node_modules
 /public/client/tmp
-/log/*
-
+/log/development.log
+/log/test.log
 # Miscellaneous
 /.sass-cache
 /connect.lock

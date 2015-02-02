@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150201194233) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "conversions", force: true do |t|
     t.string   "user_agent"
     t.string   "host"
@@ -24,7 +27,7 @@ ActiveRecord::Schema.define(version: 20150201194233) do
     t.datetime "updated_at"
   end
 
-  add_index "conversions", ["tracker_id"], name: "index_conversions_on_tracker_id"
+  add_index "conversions", ["tracker_id"], name: "index_conversions_on_tracker_id", using: :btree
 
   create_table "trackers", force: true do |t|
     t.string   "name"
@@ -33,7 +36,7 @@ ActiveRecord::Schema.define(version: 20150201194233) do
     t.integer  "user_id"
   end
 
-  add_index "trackers", ["user_id"], name: "index_trackers_on_user_id"
+  add_index "trackers", ["user_id"], name: "index_trackers_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.datetime "created_at",                     null: false
@@ -44,7 +47,7 @@ ActiveRecord::Schema.define(version: 20150201194233) do
     t.string   "remember_token",     limit: 128, null: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email"
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
 end
