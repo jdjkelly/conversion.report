@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :conversions, except: [:update, :destroy]
+  resources :conversions, only: [:create]
   resources :trackers
 
   # The priority is based upon order of creation: first created -> highest priority.
