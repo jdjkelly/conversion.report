@@ -15,4 +15,13 @@ class Tracker < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :user
+
+  # Return the rate of conversions per day, rounded
+  def conversions_per_day
+    conversions.group_by do |conversion|
+      conversion.created_at.beginning_of_day
+    end.map do |conversion|
+      conversion[1].count
+    end.sum.to_f
+  end
 end

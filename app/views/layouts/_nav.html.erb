@@ -9,7 +9,7 @@
           <%= link_to "Signed in as #{current_user.email}", edit_user_password_path(current_user) %>
         </li>
         <li>
-          <%= button_to 'Sign out', sign_out_path, method: :delete, class: 'btn btn-primary navbar-btn' %>
+          <%= button_to 'Sign out', sign_out_path, method: :delete, class: 'btn btn-default navbar-btn' %>
         </li>
       <% else %>
         <li>

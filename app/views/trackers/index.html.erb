@@ -1,23 +1,16 @@
-<%= link_to 'New Tracker', new_tracker_path, class: "btn btn-sm btn-primary" %>
-
-<div class="container-fluid">
-  div class="row">
-    <div class="col-sm-3 col-md-2 sidebar">
-      <ul class="nav nav-sidebar">
-        <li class="active">
-          <a href="/trackers">Trackers <span class="sr-only">(current)</span></a>
-        </li>
-      </ul>
-    </div>
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<div class="container">
+  <% if @trackers.present? %>
+    <div class="col-sm-10 col-sm-push-1">
       <h1 class="page-header">Trackers</h1>
-
       <div class="table-responsive">
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>#</th>
+              <th>Id</th>
               <th>Name</th>
+              <th>Created at</th>
+              <th>Conversions count</th>
+              <th>Rate per day</th>
               <th></th>
               <th></th>
             </tr>
@@ -26,12 +19,15 @@
           <% @trackers.each do |tracker| %>
             <tr>
               <td><%= tracker.id %></td>
-              <td><%= link_to tracker.name, tracker.name %></td>
+              <td><%= link_to tracker.name, tracker_path(tracker) %></td>
+              <td><%= tracker.created_at %></td>
+              <td><%= tracker.conversions.count  %></td>
+              <td><%= tracker.conversions_per_day %></td>
               <td>
-                <div class="btn-group">
-        	  <%= link_to 'Edit', edit_tracker_path(tracker), class: "btn btn-sm btn-primary" %>
-        	  <%= link_to 'Destroy', tracker, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-primary" %>
-        	</div>
+                <%= link_to 'Edit', edit_tracker_path(tracker), class: "btn btn-sm btn-primary" %>
+              </td>
+              <td>
+                <%= link_to 'Destroy', tracker, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-primary" %>
               </td>
             </tr>
           <% end %>
@@ -39,5 +35,14 @@
         </table>
       </div>
     </div>
-  </div>
+  <% else %>
+    <div class="jumbotron">
+      <h1>
+        Get started
+      </h1>
+      <p>A tracker is your starting point. Trackers describe events that you want to track conversions on. That sign up button on the new landing page? Let's track conversions on that.
+      <p>
+      <%= render 'form' %>
+    </div>
+  <% end %>
 </div>

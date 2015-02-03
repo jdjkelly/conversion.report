@@ -1,9 +1,11 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+<h2><%= @tracker.name %>
+<h4>Tracker</h4>
 
-<p>
-  <strong>Name:</strong>
-  <%= @tracker.name %>
-</p>
+<textarea class="form-control">
+  <a href="#" data-cr-track-id="<%= @tracker.id %>"><%= @tracker.name %></a>
+  <script src="https://scripts.convert.report/tracker.js"></script>
+</textarea>
 
-<%= link_to 'Edit', edit_tracker_path(@tracker), class: "btn btn-sm btn-primary" %> |
 <%= link_to 'Back', trackers_path, class: "btn btn-sm btn-primary" %>
+

@@ -5,7 +5,8 @@ class TrackersController < ApplicationController
   # GET /trackers
   # GET /trackers.json
   def index
-    @trackers = Tracker.where(user:current_user)
+    @trackers = Tracker.where(user: current_user)
+    @tracker = Tracker.new(user_id: current_user.id)
   end
 
   # GET /trackers/1
