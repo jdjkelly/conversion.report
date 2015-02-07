@@ -11,8 +11,24 @@
 #  tracker_id :integer
 #  created_at :datetime
 #  updated_at :datetime
+#  country    :string(255)
 #
 
 class Conversion < ActiveRecord::Base
   belongs_to :tracker
+
+  before_validation :parse_user_agent, on: :create, if: -> { self.user_agent.present? }
+  before_validation :geocode, if: -> { self.ip_address.present? }
+
+  private
+
+  def parse_user_agent
+    ua           = UserAgent.parse(user_agent)
+    self.os      = ua.platform
+    self.browser = ua.browser
+  end
+
+  def geocode
+    self.country = Geocoder.search(self.ip_address).last.data["country_name"]
+  end
 end

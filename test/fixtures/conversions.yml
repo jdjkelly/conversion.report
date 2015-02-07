@@ -11,6 +11,7 @@
 #  tracker_id :integer
 #  created_at :datetime
 #  updated_at :datetime
+#  country    :string(255)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

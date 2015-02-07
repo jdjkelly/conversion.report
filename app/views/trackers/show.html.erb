@@ -1,11 +1,58 @@
+
 <div class="container">
-<h2><%= @tracker.name %>
-<h4>Tracker</h4>
+  <% if @tracker.conversions.present? %>
+    <h1 class="page-header">Conversion report for <%= @tracker.name %> <small>(<%= link_to 'show all trackers', trackers_path %>)</small></h1>
+    <div class="row">
+      <div class="col-sm-8">
+        <%= line_chart @tracker.conversions.group_by_day(:created_at).count %>
+      </div>
+      <div class="col-sm-4">
+        <%= geo_chart @tracker.conversions.group(:country).count %>
+      </div>
+    </div>
 
-<textarea class="form-control">
-  <a href="#" data-cr-track-id="<%= @tracker.id %>"><%= @tracker.name %></a>
-  <script src="https://scripts.convert.report/tracker.js"></script>
-</textarea>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Created at</th>
+                <th>Host</th>
+                <th>Browser</th>
+                <th>IP Address</th>
+                <th>Country</th>
+                <th>Useragent</th>
+              </tr>
+            </thead>
+            <tbody>
+            <% @tracker.conversions.each do |conversion| %>
+              <tr>
+                <td><%= conversion.created_at %></td>
+                <td><%= conversion.host %></td>
+                <td><%= conversion.browser %></td>
+                <td><%= conversion.ip_address %></td>
+                <td><%= conversion.country %></td>
+                <td><%= conversion.user_agent %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="jumbotron">
+      <h1>
+        Install your tracker
+      </h1>
 
-<%= link_to 'Back', trackers_path, class: "btn btn-sm btn-primary" %>
 
+
+      <textarea class="form-control">
+        <a href="#" data-cr-track-id="<%= @tracker.id %>"><%= @tracker.name %></a>
+        <script src="https://scripts.convert.report/tracker.js"></script>
+      </textarea>
+    </div>
+  <% end %>
+</div>
