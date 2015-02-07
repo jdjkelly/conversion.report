@@ -5,18 +5,19 @@ class TrackersController < ApplicationController
   # GET /trackers
   # GET /trackers.json
   def index
-    @trackers = Tracker.where(user: current_user)
-    @tracker = Tracker.new(user_id: current_user.id)
+    @trackers    = current_user.trackers.order(created_at: :desc)
+    @tracker     = Tracker.new(user_id: current_user.id)
   end
 
   # GET /trackers/1
   # GET /trackers/1.json
   def show
+    @trackers    = current_user.trackers
   end
 
   # GET /trackers/new
   def new
-    @tracker = Tracker.new
+    @tracker     = Tracker.new(user_id: current_user.id)
   end
 
   # GET /trackers/1/edit

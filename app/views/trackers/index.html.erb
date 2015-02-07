@@ -1,48 +1,62 @@
 <div class="container">
   <% if @trackers.present? %>
-    <div class="col-sm-10 col-sm-push-1">
-      <h1 class="page-header">Trackers</h1>
-      <div class="table-responsive">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>Created at</th>
-              <th>Conversions count</th>
-              <th>Rate per day</th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-          <% @trackers.each do |tracker| %>
-            <tr>
-              <td><%= tracker.id %></td>
-              <td><%= link_to tracker.name, tracker_path(tracker) %></td>
-              <td><%= tracker.created_at %></td>
-              <td><%= tracker.conversions.count  %></td>
-              <td><%= tracker.conversions_per_day %></td>
-              <td>
-                <%= link_to 'Edit', edit_tracker_path(tracker), class: "btn btn-sm btn-primary" %>
-              </td>
-              <td>
-                <%= link_to 'Destroy', tracker, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-primary" %>
-              </td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
+    <h1 class="page-header">Trackers</h1>
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Add a new tracker</h3>
+          </div>
+          <div class="panel-body">
+            <%= render 'form' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-9">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Created at</th>
+                <th>Conversions count</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+            <% @trackers.each do |tracker| %>
+              <tr>
+                <td><%= tracker.id %></td>
+                <td><%= link_to tracker.name, tracker_path(tracker) %></td>
+                <td><%= tracker.created_at %></td>
+                <td><%= tracker.conversions.count  %></td>
+                <td>
+                  <%= link_to 'Edit', edit_tracker_path(tracker), class: "btn btn-sm btn-primary" %>
+                </td>
+                <td>
+                  <%= link_to 'Destroy', tracker, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-default" %>
+                </td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   <% else %>
     <div class="jumbotron">
       <h1>
-        Get started
+        A Convert Report tells you when links are clicked and when forms are submitted.
       </h1>
-      <p>A tracker is your starting point. Trackers describe events that you want to track conversions on. That sign up button on the new landing page? Let's track conversions on that.
-      <p>
-      <%= render 'form' %>
+      <h2>What's the name of this report?</h2>
+      <div class="row">
+	<div class="col-md-6 col-lg-6">
+          <%= render 'form' %>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>

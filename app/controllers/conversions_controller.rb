@@ -11,7 +11,7 @@ class ConversionsController < ApplicationController
     @conversion = Conversion.new(conversion_params.merge({
       user_agent: request.user_agent,
       ip_address: request.ip
-     }))
+    }))
 
     respond_to do |format|
       if @conversion.save
@@ -24,8 +24,8 @@ class ConversionsController < ApplicationController
 
   private
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def conversion_params
-      params.require(:conversion).permit(:tracker_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def conversion_params
+    params.require(:conversion).permit(:tracker_id)
+  end
 end
