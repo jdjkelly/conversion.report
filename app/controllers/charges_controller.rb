@@ -7,7 +7,7 @@ class ChargesController < ApplicationController
     @amount = 500
     
     customer = Stripe::Customer.create(
-      :email => 'example@stripe.com',
+      :email => current_user.email,
       :card  => params[:stripeToken],
       :plan => 'crp'
     )
@@ -18,6 +18,8 @@ class ChargesController < ApplicationController
       :description => 'Rails Stripe customer',
       :currency    => 'usd'
     )
+    
+    current_user.update_attribute(:is_premium, true)
   
   rescue Stripe::CardError => e
     flash[:error] = e.message

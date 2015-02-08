@@ -15,10 +15,10 @@
 
       <div class="field form-group">
         <%= f.label :name, 'Tracker label' %><br>
-        <%= f.text_field :name, class: "form-control", disabled:!current_user.is_premium? %>
+        <%= f.text_field :name, class: "form-control", disabled:!can_create_tracker %>
       </div>
       <div class="actions">
-        <%= f.submit class: "btn btn-primary btn-block #{' disabled' unless current_user.is_premium?}" %>
+        <%= f.submit class: "btn btn-primary btn-block #{' disabled' unless can_create_tracker}" %>
       </div>
     <% end %>
   </div>

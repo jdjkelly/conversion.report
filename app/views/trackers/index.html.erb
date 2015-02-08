@@ -1,5 +1,6 @@
 <div class="container">
-  <% unless current_user.is_premium? %>
+  <% unless can_create_tracker %>
+    <div class="clearfix"><br></div>
     <div class="row">
       <div class="col-lg-12 alert alert-danger">
         <strong>Hey, good lookin!</strong> You can only create one tracker and see the ten most recent conversions.
@@ -16,9 +17,7 @@
             <h3 class="panel-title">Add a new tracker</h3>
           </div>
           <div class="panel-body">
-            <% if current_user.is_premium? %>
-              <%= render 'form' %>
-            <% end %>
+            <%= render 'form' %>
           </div>
         </div>
       </div>
@@ -63,7 +62,7 @@
       </h1>
       <h2>What's the name of this report?</h2>
       <div class="row">
-	<div class="col-md-6 col-lg-6">
+        <div class="col-md-6 col-lg-6">
           <%= render 'form' %>
         </div>
       </div>
