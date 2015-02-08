@@ -1,14 +1,17 @@
 <div class="jumbotron">
   <div class="container text-center">
-    <h1>Conversion.Report</h1>
-    <h2>Really simple conversion tracking for the web.</h2>
-    <p>Track clicks on buttons with just two lines of code:</p>
+    <h2 class="animated bounceIn"><i class="fa fa-area-chart"></i><strong>Conversion</strong>.Report</h2>
+    <h1>Really simple conversion tracking</h1>
+    <h3>Track clicks on buttons with just two lines of code:</h3>
     <code>
-      &lt;a href="/sign_up" data-cr-id='IuJs'&gt;Start tracking&lt;/a&gt;<br/>
-      &lt;script src="https://js.conversion.report.com/tracker.js"&gt;&lt;/script&gt;
+      &lt;a href="/sign_up" data-cr-id='IuJs'&gt;Start tracking&lt;/a&gt;
+    </code>
+    <br/>
+    <code>
+      &lt;script src="<%= ENV["javascript_client_path"] %>"&gt;&lt;/script&gt;
     </code>
     <hr/>
-    <p><%= link_to 'Start tracking', sign_up_path, class: 'btn btn-lg btn-primary' %></p>
+    <p><%= link_to 'Start tracking', sign_up_path, class: 'btn btn-lg btn-primary animated flipInX' %></p>
   </div>
 </div>
 

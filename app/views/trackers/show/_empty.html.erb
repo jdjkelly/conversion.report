@@ -8,7 +8,7 @@
       <div class="panel-body">
         <p>Add this script above your <code>&lt;/head&gt;</code></p>
         <textarea class="form-control">
-<script src="https://js.conversion.report/tracker.js"></script>
+<script src="<%= ENV["javascript_client_path"] %>"></script>
         </textarea>
         <p>Next, you need to <code>data-cr-id="<%= @tracker.id %>"</code> to the HTML tags that you want to track.
         <code><%= @tracker.id %></code> is the unique tracking code for your new report.</p>
@@ -35,6 +35,6 @@
   </div>
 </div>
 
-<%= javascript_include_tag 'https://js.conversion.report/tracker.js' %>
+<%= javascript_include_tag ENV["javascript_client_path"] %>
 
 

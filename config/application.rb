@@ -6,6 +6,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+ENV.update YAML.load_file('config/application.yml')[Rails.env] rescue puts "You did not provide an application.yml file"
+
 module ConversionReport
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -23,7 +25,10 @@ module ConversionReport
     config.middleware.insert_before 0, "Rack::Cors" do
       allow do
         origins '*'
-        resource '/conversions', :headers => :any, :methods => [:post]
+
+        resource '/conversions',
+          :headers => :any,
+          :methods => [:post]
       end
     end
   end
