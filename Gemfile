@@ -67,3 +67,6 @@ gem 'geocoder'
 gem 'therubyracer'
 gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem 'twitter-bootstrap-rails'
+
+# Get paid while you're getting paid
+gem 'stripe'
