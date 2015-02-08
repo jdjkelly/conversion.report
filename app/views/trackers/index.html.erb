@@ -56,16 +56,6 @@
       </div>
     </div>
   <% else %>
-    <div class="jumbotron">
-      <h1>
-        A Convert Report tells you when links are clicked and when forms are submitted.
-      </h1>
-      <h2>What's the name of this report?</h2>
-      <div class="row">
-        <div class="col-md-6 col-lg-6">
-          <%= render 'form' %>
-        </div>
-      </div>
-    </div>
+    <%= render 'trackers/index/empty' %>
   <% end %>
 </div>

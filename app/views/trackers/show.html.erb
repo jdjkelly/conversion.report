@@ -42,17 +42,6 @@
       </div>
     </div>
   <% else %>
-    <div class="jumbotron">
-      <h1>
-        Install your tracker
-      </h1>
-
-
-
-      <textarea class="form-control">
-        <a href="#" data-cr-track-id="<%= @tracker.id %>"><%= @tracker.name %></a>
-        <script src="https://scripts.convert.report/tracker.js"></script>
-      </textarea>
-    </div>
+    <%= render 'trackers/show/empty' %>
   <% end %>
 </div>

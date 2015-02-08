@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-sm-6 col-sm-push-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Install your tracker</h3>
+      </div>
+
+      <div class="panel-body">
+        <p>Add this script above your <code>&lt;/head&gt;</code></p>
+        <textarea class="form-control">
+<script src="https://js.conversion.report/tracker.js"></script>
+        </textarea>
+        <p>Next, you need to <code>data-cr-id="<%= @tracker.id %>"</code> to the HTML tags that you want to track.
+        <code><%= @tracker.id %></code> is the unique tracking code for your new report.</p>
+
+        <p>
+        You can add your tracking code to any of the following tags: <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, and <code>&lt;form&gt;</code>
+        </p>
+        <p>For example, a link tag:</p>
+        <textarea class="form-control">
+<a href="/sign-up" data-cr-id="<%= @tracker.id %>">Sign up</a>
+        </textarea>
+        <p>In the case of a form:</p>
+        <textarea class="form-control">
+<form action="/sign-up" method="post" data-cr-id="<%= @tracker.id %>">
+  <!-- ... -->
+</form>
+        </textarea>
+        <hr/>
+        <h5>I've installed it, what now?</h5>
+        <p>We're waiting for your conversions! When your users start clicking/submitting your tracked
+        tags, we'll start displaying data here. Can't wait? <%= link_to 'Click here to send a test conversion', @tracker, :'data-cr-id' => @tracker.id %>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= javascript_include_tag 'https://js.conversion.report/tracker.js' %>
+
+
