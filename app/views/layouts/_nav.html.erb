@@ -6,7 +6,11 @@
     <ul class="nav navbar-nav navbar-right">
       <% if signed_in? %>
         <li>
-          <%= link_to "Signed in as #{current_user.email}", edit_user_password_path(current_user) %>
+          <%=
+             link_to_if(current_user.is_premium?, ("Signed in as #{current_user.email} <i class='fa fa-star' style='color:gold'></i>").html_safe, edit_user_password_path(current_user)) do
+               link_to ("Signed in as #{current_user.email}  <i class='fa fa-star-o' style='color:gold'></i>").html_safe, edit_user_password_path(current_user)
+             end
+          %>
         </li>
         <li>
           <%= button_to 'Sign out', sign_out_path, method: :delete, class: 'btn btn-default navbar-btn' %>
