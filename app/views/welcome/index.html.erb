@@ -1,8 +1,51 @@
-<div class="jumbotron text-center">
-  <div class="container">
+<div class="jumbotron">
+  <div class="container text-center">
     <h1>Conversion.Report</h1>
     <h2>Really simple conversion tracking for the web.</h2>
-    <hr>
-    <%= link_to 'Get tracking', sign_up_path, class: 'btn btn-lg btn-default' %>
+    <p>Track clicks on buttons with just two lines of code:</p>
+    <code>
+      &lt;a href="/sign_up" data-cr-id='IuJs'&gt;Start tracking&lt;/a&gt;<br/>
+      &lt;script src="https://js.conversion.report.com/tracker.js"&gt;&lt;/script&gt;
+    </code>
+    <hr/>
+    <p><%= link_to 'Start tracking', sign_up_path, class: 'btn btn-lg btn-primary' %></p>
   </div>
 </div>
+
+<div class="container">
+  <!-- Example row of columns -->
+  <div class="row">
+    <div class="col-md-4">
+      <h3>1. Create a report</h3>
+      <p>
+        A conversion report tells you when links are clicked and when forms are submitted.
+      </p>
+      <p>
+        Typically, conversion reports are used to track things like clicks on call to action buttons,
+        sign forms, and product pages.
+      </p>
+      <p>
+        <%= link_to 'Create report', sign_up_path, class: 'btn btn-default' %>
+      </p>
+    </div>
+    <div class="col-md-4">
+      <h2>2. Install .js plugin</h2>
+      <p>Add our tracking script to your page and then tag the links you want to track with your report id: </p>
+      <p><code>&lt;a href="/sign_up" data-cr-id='IuJs'&gt;Start tracking&lt;/a&gt;</code></p>
+      <p><%= link_to 'Install plugin', sign_up_path, class: 'btn btn-default' %></p>
+   </div>
+    <div class="col-md-4">
+      <h2>3. Review data</h2>
+      <p>As your visitors click the link you're tracking, Conversion.Report will record the conversion</p>
+      <p>Each conversion records the time of click, IP address, host name, country of origin, browser,
+      and user agent - all easily exportable to <code>csv</code>, <code>xls</code>, or <code>json</code>
+      <p><%= link_to 'Review data', sign_up_path, class: 'btn btn-default' %></p>
+    </div>
+  </div>
+
+  <hr>
+
+  <footer>
+    <p>&copy; Conversion.Report</p>
+  </footer>
+</div> <!-- /container -->

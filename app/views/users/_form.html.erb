@@ -1,9 +1,15 @@
-<div class="form-group">
-  <%= form.label :email %>
+<div class="form-group <%= 'has-error' if @user.errors[:email].present? %> ">
+  <%= form.label :email, class: 'control-label' %>
   <%= form.text_field :email, type: 'email', class: 'form-control' %>
+  <% if @user.errors[:email].present? %>
+    <span class="help-block"><%= @user.errors.messages[:email].join(', ') %></span>
+  <% end %>
 </div>
 
-<div class="form-group">
-  <%= form.label :password %>
+<div class="form-group <%= 'has-error' if @user.errors[:password].present? %> ">
+  <%= form.label :password, class: 'control-label' %>
   <%= form.password_field :password, class: 'form-control' %>
+  <% if @user.errors[:password].present? %>
+    <span class="help-block"><%= @user.errors.messages[:password].join(', ') %></span>
+  <% end %>
 </div>
