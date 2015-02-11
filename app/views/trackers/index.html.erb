@@ -27,7 +27,7 @@
           <table class="table table-striped">
             <thead>
               <tr>
-                <th>Id</th>
+                <th>Tracking Id</th>
                 <th>Name</th>
                 <th>Created at</th>
                 <th>Conversions count</th>
@@ -38,7 +38,7 @@
             <tbody>
             <% @trackers.each do |tracker| %>
               <tr>
-                <td><%= tracker.id %></td>
+                <td><%= tracker.tracking_id %></td>
                 <td><%= link_to tracker.name, tracker_path(tracker) %></td>
                 <td><%= tracker.created_at %></td>
                 <td><%= tracker.conversions.count  %></td>
