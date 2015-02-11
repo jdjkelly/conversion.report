@@ -32,6 +32,7 @@
                 <th>Created at</th>
                 <th>Conversions count</th>
                 <th></th>
+                <th></td>
                 <th></th>
               </tr>
             </thead>
@@ -44,6 +45,15 @@
                 <td><%= tracker.conversions.count  %></td>
                 <td>
                   <%= link_to 'Edit', edit_tracker_path(tracker), class: "btn btn-sm btn-primary" %>
+                </td>
+                <td>
+                  <%= button_tag 'Tracking code',
+                    class: 'btn btn-sm btn-info',
+                    :"data-toggle"    => 'popover',
+                    :"data-content"   => "<code>data-cr-id=\"#{ tracker.tracking_id }\"</code>",
+                    :"data-placement" => 'bottom',
+                    title: 'Tracking Code',
+                    type: 'button'%>
                 </td>
                 <td>
                   <%= link_to 'Destroy', tracker, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-default" %>
