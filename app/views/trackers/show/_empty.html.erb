@@ -1,3 +1,4 @@
+<br/>
 <div class="row">
   <div class="col-sm-6 col-sm-push-3">
     <div class="panel panel-default">
@@ -7,25 +8,21 @@
 
       <div class="panel-body">
         <p>Add this script above your <code>&lt;/head&gt;</code></p>
-        <textarea class="form-control">
-<script src="<%= ENV["javascript_client_path"] %>"></script>
-        </textarea>
-        <p>Next, you need to <code>data-cr-id="<%= @tracker.id %>"</code> to the HTML tags that you want to track.
-        <code><%= @tracker.id %></code> is the unique tracking code for your new report.</p>
+        <textarea class="form-control" rows="1" onclick="this.focus();this.select()">
+<script src="<%= ENV["javascript_client_path"] %>"></script></textarea>
+        <br/>
+        <p>Next, you need to <code>data-cr-id="<%= @tracker.tracking_id %>"</code> to the HTML tags that you want to track.
+        <code><%= @tracker.tracking_id %></code> is the unique tracking code for your new report.</p>
 
         <p>
         You can add your tracking code to any of the following tags: <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, and <code>&lt;form&gt;</code>
         </p>
         <p>For example, a link tag:</p>
-        <textarea class="form-control">
-<a href="/sign-up" data-cr-id="<%= @tracker.id %>">Sign up</a>
-        </textarea>
+        <textarea rows="1" class="form-control" onclick="this.focus();this.select()"><a href="/sign-up" data-cr-id="<%= @tracker.tracking_id %>">Sign up</a></textarea>
+        <br/>
         <p>In the case of a form:</p>
-        <textarea class="form-control">
-<form action="/sign-up" method="post" data-cr-id="<%= @tracker.id %>">
-  <!-- ... -->
-</form>
-        </textarea>
+        <textarea rows="2" class="form-control" onclick="this.focus();this.select()">
+<form action="/sign-up" method="post" data-cr-id="<%= @tracker.tracking_id %>">...</form></textarea>
         <hr/>
         <h5>I've installed it, what now?</h5>
         <p>We're waiting for your conversions! When your users start clicking/submitting your tracked

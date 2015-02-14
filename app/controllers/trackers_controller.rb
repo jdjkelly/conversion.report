@@ -7,6 +7,8 @@ class TrackersController < ApplicationController
   def index
     @trackers    = current_user.trackers.order(created_at: :desc)
     @tracker     = Tracker.new(user_id: current_user.id)
+
+    redirect_to new_tracker_path unless @trackers.present?
   end
 
   # GET /trackers/1

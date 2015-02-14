@@ -20,6 +20,8 @@ class Conversion < ActiveRecord::Base
   before_validation :parse_user_agent, on: :create, if: -> { self.user_agent.present? }
   before_validation :geocode, if: -> { self.ip_address.present? }
 
+  validates_presence_of :tracker_id
+
   private
 
   def parse_user_agent

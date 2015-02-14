@@ -1,7 +1,7 @@
 
 <div class="container">
   <% if @tracker.conversions.present? %>
-    <h1 class="page-header">Conversion report for <%= @tracker.name %> <small>(<%= link_to 'show all trackers', trackers_path %>)</small></h1>
+    <h3 class="page-header">Conversions during <strong>last month</strong> for <strong><%= @tracker.name %></strong> <small>(<%= link_to 'show all trackers', trackers_path %>)</small></h1>
     <div class="row">
       <div class="col-sm-8">
         <%= line_chart @tracker.conversions.group_by_day(:created_at).count %>

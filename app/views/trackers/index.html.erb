@@ -8,64 +8,60 @@
       </div>
     </div>
   <% end %>
-  <% if @trackers.present? %>
-    <h1 class="page-header">Trackers</h1>
-    <div class="row">
-      <div class="col-sm-3">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Add a new tracker</h3>
-          </div>
-          <div class="panel-body">
-            <%= render 'form' %>
-          </div>
+  <h1 class="page-header">Trackers</h1>
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Add a new tracker</h3>
         </div>
-      </div>
-
-      <div class="col-sm-9">
-        <div class="table-responsive">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>Tracking Id</th>
-                <th>Name</th>
-                <th>Created at</th>
-                <th>Conversions count</th>
-                <th></th>
-                <th></td>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-            <% @trackers.each do |tracker| %>
-              <tr>
-                <td><%= tracker.tracking_id %></td>
-                <td><%= link_to tracker.name, tracker_path(tracker) %></td>
-                <td><%= tracker.created_at %></td>
-                <td><%= tracker.conversions.count  %></td>
-                <td>
-                  <%= link_to 'Edit', edit_tracker_path(tracker), class: "btn btn-sm btn-primary" %>
-                </td>
-                <td>
-                  <%= button_tag 'Tracking code',
-                    class: 'btn btn-sm btn-info',
-                    :"data-toggle"    => 'popover',
-                    :"data-content"   => "<code>data-cr-id=\"#{ tracker.tracking_id }\"</code>",
-                    :"data-placement" => 'bottom',
-                    title: 'Tracking Code',
-                    type: 'button'%>
-                </td>
-                <td>
-                  <%= link_to 'Destroy', tracker, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-default" %>
-                </td>
-              </tr>
-            <% end %>
-            </tbody>
-          </table>
+        <div class="panel-body">
+          <%= render 'form' %>
         </div>
       </div>
     </div>
-  <% else %>
-    <%= render 'trackers/index/empty' %>
-  <% end %>
+
+    <div class="col-sm-9">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Tracking Id</th>
+              <th>Name</th>
+              <th>Created at</th>
+              <th>Conversions count</th>
+              <th></th>
+              <th></td>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @trackers.each do |tracker| %>
+            <tr>
+              <td><%= tracker.tracking_id %></td>
+              <td><%= link_to tracker.name, tracker_path(tracker) %></td>
+              <td><%= tracker.created_at %></td>
+              <td><%= tracker.conversions.count  %></td>
+              <td>
+                <%= link_to 'Edit', edit_tracker_path(tracker), class: "btn btn-sm btn-primary" %>
+              </td>
+              <td>
+                <%= button_tag 'Tracking code',
+                  class: 'btn btn-sm btn-info',
+                  :"data-toggle"    => 'popover',
+                  :"data-content"   => "<code>data-cr-id=\"#{ tracker.tracking_id }\"</code>",
+                  :"data-placement" => 'bottom',
+                  title: 'Tracking Code',
+                  type: 'button'%>
+              </td>
+              <td>
+                <%= link_to 'Destroy', tracker, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-default" %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>

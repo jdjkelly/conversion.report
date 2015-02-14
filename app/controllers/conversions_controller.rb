@@ -27,8 +27,7 @@ class ConversionsController < ApplicationController
   private
 
   def find_tracker
-    @tracker = Tracker.find_by(tracking_id: conversion_params[:tracking_id])
-    raise ActiveRecord::RecordNotFound unless @tracker.present?
+    @tracker ||= Tracker.find_by(tracking_id: conversion_params[:tracking_id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
