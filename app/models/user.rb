@@ -16,4 +16,10 @@ class User < ActiveRecord::Base
   include Clearance::User
 
   has_many :trackers
+
+  after_initialize :init
+
+  def init
+    self.is_premium ||= true
+  end
 end
