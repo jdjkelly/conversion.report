@@ -7,8 +7,8 @@
 #   mayor.create(name: 'emanuel', city: cities.first)
 #
 
-josh   = User.create({email: 'jdjkelly@gmail.com', password: '123'})
-cailen = User.create({email: 'cailen.mac@gmail.com', password: '123'})
+josh   = User.create({email: 'jdjkelly@gmail.com', password: '123', is_premium: true})
+cailen = User.create({email: 'cailen.mac@gmail.com', password: '123', is_premium: true})
 
 josh_tracker   = Tracker.create({name: 'button-tracker', user_id: josh.id})
 cailen_tracker = Tracker.create({name: 'button-tracker', user_id: cailen.id})

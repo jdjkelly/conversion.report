@@ -2,11 +2,12 @@
 #
 # Table name: trackers
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  created_at :datetime
-#  updated_at :datetime
-#  user_id    :integer
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#  user_id     :integer
+#  tracking_id :string(255)
 #
 
 class Tracker < ActiveRecord::Base
@@ -16,7 +17,7 @@ class Tracker < ActiveRecord::Base
 
   validates_presence_of :user, :name, :tracking_id
 
-  after_initialize :build_tracking_id
+  before_create :build_tracking_id
 
   private
 
