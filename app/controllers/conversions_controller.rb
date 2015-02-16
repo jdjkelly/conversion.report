@@ -9,7 +9,7 @@ class ConversionsController < ApplicationController
   # POST /conversions
   # POST /conversions.json
   def create
-     @conversion = Conversion.new({
+    @conversion = Conversion.new({
       user_agent: request.user_agent,
       ip_address: request.ip,
       tracker: find_tracker

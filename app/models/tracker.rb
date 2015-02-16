@@ -17,7 +17,7 @@ class Tracker < ActiveRecord::Base
 
   validates_presence_of :user, :name, :tracking_id
 
-  before_create :build_tracking_id
+  before_validation :build_tracking_id, on: :create
 
   private
 

@@ -3,6 +3,7 @@ require 'test_helper'
 class ConversionsControllerTest < ActionController::TestCase
   setup do
     @conversion = conversions(:one)
+    @tracker = trackers(:one)
     sign_in_as(users(:billy))
   end
 
@@ -12,7 +13,9 @@ class ConversionsControllerTest < ActionController::TestCase
                                   host: @conversion.host,
                                   ip_address: @conversion.ip_address,
                                   os: @conversion.os,
-                                  user_agent: @conversion.user_agent }, format: 'json'
+                                  user_agent: @conversion.user_agent,
+                                  tracking_id: @tracker.tracking_id
+      }, format: 'json'
     end
 
     assert_response :success

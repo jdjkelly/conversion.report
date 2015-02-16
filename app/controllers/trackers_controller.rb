@@ -29,10 +29,10 @@ class TrackersController < ApplicationController
   # POST /trackers
   # POST /trackers.json
   def create
-    @tracker = current_user.trackers.new(tracker_params)
+    @tracker = current_user.trackers.create(tracker_params)
 
     respond_to do |format|
-      if @tracker.save
+      if @tracker.persisted?
         format.html { redirect_to @tracker, notice: 'Tracker was successfully created.' }
         format.json { render :show, status: :created, location: @tracker }
       else
@@ -46,6 +46,7 @@ class TrackersController < ApplicationController
   # PATCH/PUT /trackers/1.json
   def update
     respond_to do |format|
+
       if @tracker.update(tracker_params)
         format.html { redirect_to @tracker, notice: 'Tracker was successfully updated.' }
         format.json { render :show, status: :ok, location: @tracker }
